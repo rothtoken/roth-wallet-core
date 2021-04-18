@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar> <ion-title> {{'roth ID' |translate}} </ion-title> </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="roth-id__container">
+    <img
+      src="assets/img/app/icon-flat.svg"
+      class="roth-id__icon"
+      width="40"
+    />
+    <div class="col">
+      <ion-label>{{userBasicInfo?.givenName}} {{userBasicInfo?.familyName}}</ion-label>
+      <ion-label>{{userBasicInfo?.email}}</ion-label>
+    </div>
+  </div>
+  <ion-list class="bp-list roth-id__settings-list">
+    <ion-item>
+      <ion-label>{{'Sync gift card purchases' | translate}}</ion-label>
+      <ion-toggle
+        [(ngModel)]="rothIdSettings.syncGiftCardPurchases"
+        (ionChange)="onSettingsChange()"
+      ></ion-toggle>
+    </ion-item>
+    <label-tip type="info" header="no-header">
+      <div label-tip-body>
+        <span translate>If enabled, your gift card purchases will be associated with your roth ID, allowing you to keep track of your gift card purchases even if this device is lost.</span>
+      </div>
+    </label-tip>
+  </ion-list>
+  <button
+    ion-button
+    class="button-standard button-secondary roth-id__disconnect-button"
+    (click)="disconnectrothID()"
+  >
+    {{'Disconnect' | translate}}
+  </button>
+</ion-content>

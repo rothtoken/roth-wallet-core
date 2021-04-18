@@ -1,0 +1,7 @@
+<ion-tabs #tabs>
+  <ion-tab [root]="homeRoot" tabIcon="tab-home"></ion-tab>
+  <ion-tab [root]="walletsRoot" [tabBadge]="txpsN" tabIcon="tab-wallets"></ion-tab>
+  <ion-tab tabIcon="tab-transact" (ionSelect)="openFooterMenu()"></ion-tab>
+  <ion-tab (ionSelect)="disableCardNotificationBadge()" [root]="cardsRoot" [tabBadgeStyle]="'danger'" [tabBadge]="cardNotificationBadgeText" [show]="appName === 'roth'" tabIcon="tab-cards"></ion-tab>
+  <ion-tab [root]="settingsRoot" tabIcon="tab-settings"></ion-tab>
+</ion-tabs>

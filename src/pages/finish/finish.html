@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="content" [ngClass]="{'success': cssClass == 'success', 'warning': cssClass == 'warning', 'danger': cssClass == 'danger', 'primary': cssClass == 'primary', 'bg-none': cssClass == 'bg-none'}">
+    <div class="body">
+      <div class="body-img success-img" *ngIf="cssClass == 'primary'"></div>
+      <img class="body-img" *ngIf="cssClass == 'success'" src="assets/img/onboarding-success.svg">
+      <img class="body-img" *ngIf="cssClass == 'bg-none'" src="assets/img/onboarding/success.svg">
+      <img class="body-img" *ngIf="(cssClass != 'success' && cssClass != 'primary' && cssClass != 'bg-none')" src="assets/img/warning.svg">
+      <div class="body-text" [ngClass]="{'bg-none': cssClass == 'bg-none'}">
+        {{finishText}}
+      </div>
+      <div class="body-comment">
+        {{finishComment}}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="showLaunchRocket" class="rocket-container">
+    <img src="assets/img/rocket-doge.svg" class="rocket-img"
+    [@photoState]="launchRocketPosition"
+    (@photoState.done)="rocketLanding('land')">
+  </div>
+  <div *ngIf="showLandRocket" class="rocket-container">
+    <img src="assets/img/rocket-sad-doge.svg" class="rocket-img"
+    [@photoState]="landRocketPosition">
+  </div>
+  <div class="footer" *ngIf="cssClass !== 'bg-none'" (click)="close()" >
+    OK
+  </div>
+</div>

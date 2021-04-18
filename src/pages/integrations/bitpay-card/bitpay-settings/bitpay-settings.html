@@ -1,0 +1,52 @@
+<wide-header-page title="{{'Card Settings'|translate}}">
+  <div page-content>
+    <ion-list class="bp-list" [ngClass]="{'top-padding': !rothCard}">
+      <ng-container *ngIf="!rothCard">
+        <ion-item>
+          <ion-label>{{'Show' | translate}}</ion-label>
+          <ion-toggle [(ngModel)]="showAtHome" (ionChange)="integrationChange()"></ion-toggle>
+        </ion-item>
+        <button ion-item class="pairButton" (click)="connectrothCard()">
+          <span class="main-label">{{'Pair My roth Card' | translate}}</span>
+        </button>
+      </ng-container>
+
+
+
+      <div *ngIf="rothCard">
+        <ion-item>
+          <ion-icon item-start>
+            <img width="60" src="assets/img/roth-card/roth-card-visa.svg" />
+          </ion-icon>
+          <h2>roth Visa&reg; Card</h2>
+          <p *ngIf="rothCard.email">{{rothCard.email}}</p>
+        </ion-item>
+        <ion-item>
+          {{ 'Last four digits' | translate}}
+          <ion-note item-end>
+            {{rothCard.lastFourDigits}}
+          </ion-note>
+        </ion-item>
+
+        <button ion-item class="with-label no-border" (click)="unlinkCard(rothCard)">
+          <ion-label>{{'Unlink card' | translate}}</ion-label>
+        </button>
+        <label-tip type="warn" header="no-header">
+          <div label-tip-body>
+            <div translate>Unlink the card will remove it from this device.</div>
+          </div>
+        </label-tip>
+
+        <button ion-item class="with-label no-border" (click)="unlinkAccount(rothCard)">
+          <ion-label>{{'Unlink account' | translate}}</ion-label>
+        </button>
+        <label-tip type="warn" header="no-header">
+          <div label-tip-body>
+            <div translate>Unlink the account will remove it and all associated cards from this device.</div>
+          </div>
+        </label-tip>
+      </div>
+
+    </ion-list>
+  </div>
+</wide-header-page>
